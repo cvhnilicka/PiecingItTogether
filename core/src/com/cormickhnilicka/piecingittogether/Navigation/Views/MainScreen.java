@@ -42,11 +42,39 @@ public class MainScreen implements Screen {
         table.add(level1).fillX().uniform();
         table.row().pad(10,0,10,0);
 
+        // create the button for level 1
+        TextButton level2 = new TextButton("Level 2", skin);
+
+        // add it to the table
+        table.add(level2).fillX().uniform();
+        table.row().pad(10,0,10,0);
+
+        // create the button for level 1
+        TextButton level3 = new TextButton("Level 3", skin);
+
+        // add it to the table
+        table.add(level3).fillX().uniform();
+        table.row().pad(10,0,10,0);
+
 
         level1.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 parent.setLevel(0);
+            }
+        });
+
+        level2.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                parent.setLevel(1);
+            }
+        });
+
+        level3.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                parent.setLevel(2);
             }
         });
 

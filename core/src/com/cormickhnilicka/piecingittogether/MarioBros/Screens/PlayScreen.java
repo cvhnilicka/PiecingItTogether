@@ -51,7 +51,7 @@ public class PlayScreen implements Screen {
     private Array<Item> items;
     private PriorityQueue<ItemDef> itemsToSpawn;
 
-    public PlayScreen(MarioBros level) {
+    public PlayScreen(MarioBros level, String filename) {
         // load texture pack
         atlas = new TextureAtlas("MarioBros/Mario_and_Enemies.pack");
 
@@ -65,7 +65,7 @@ public class PlayScreen implements Screen {
 
         // load in the TMX Map loader
         maploader = new TmxMapLoader();
-        map = maploader.load("MarioBros/MarioMap.tmx");
+        map = maploader.load(filename);
         renderer = new OrthogonalTiledMapRenderer(map, 1/MarioBros.PPM);
 
          // set the gamecam position
@@ -99,16 +99,16 @@ public class PlayScreen implements Screen {
         }
     }
     public void handleInput(float dt){
-        if (Gdx.input.isKeyJustPressed(Input.Keys.UP)){
+        if (Gdx.input.isKeyJustPressed(Input.Keys.UP) || Gdx.input.isKeyPressed(Input.Keys.W)){
             // impulse = immediate change
-            player.b2body.applyLinearImpulse(new Vector2(0, 4f), player.b2body.getWorldCenter(), true);
-        }
-        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) && player.b2body.getLinearVelocity().x <= 2) {
-            player.b2body.applyLinearImpulse(new Vector2(0.1f, 0), player.b2body.getWorldCenter(), true);
-        }
-        if (Gdx.input.isKeyPressed(Input.Keys.LEFT) && player.b2body.getLinearVelocity().x >= -2) {
-            player.b2body.applyLinearImpulse(new Vector2(-0.1f, 0), player.b2body.getWorldCenter(), true);
-        }
+        player.b2body.applyLinearImpulse(new Vector2(0, 4f), player.b2body.getWorldCenter(), true);
+    }
+        if ((Gdx.input.isKeyPressed(Input.Keys.RIGHT ) || Gdx.input.isKeyPressed(Input.Keys.D)) && player.b2body.getLinearVelocity().x <= 2) {
+        player.b2body.applyLinearImpulse(new Vector2(0.1f, 0), player.b2body.getWorldCenter(), true);
+    }
+        if ((Gdx.input.isKeyPressed(Input.Keys.LEFT ) || Gdx.input.isKeyPressed(Input.Keys.A)) && player.b2body.getLinearVelocity().x >= -2) {
+        player.b2body.applyLinearImpulse(new Vector2(-0.1f, 0), player.b2body.getWorldCenter(), true);
+    }
 
     }
     public void update(float dt) {

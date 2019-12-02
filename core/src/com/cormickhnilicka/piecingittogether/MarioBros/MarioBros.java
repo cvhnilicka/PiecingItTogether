@@ -3,6 +3,12 @@ package com.cormickhnilicka.piecingittogether.MarioBros;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.cormickhnilicka.piecingittogether.MarioBros.Screens.PlayScreen;
+import com.cormickhnilicka.piecingittogether.PiecingItTogether;
+
+import java.util.Dictionary;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.Map;
 
 public class MarioBros extends Game {
     public static final int V_WITDH = 400;    //virtual dimensions of the game
@@ -19,9 +25,26 @@ public class MarioBros extends Game {
     public static final short ENEMY_HEAD_BIT = 128;
     public static final short ITEM_BIT = 256;
 
-    public MarioBros() {
+    public static final String LEVEL1 = "MarioBros/MarioMap.tmx";
+    public static final String LEVEL2 = "MarioBros/MarioMapDark.tmx";
+    public static final String LEVEL3 = "MarioBros/MarioMapRed.tmx";
+
+
+    public MarioBros(PiecingItTogether parent, int level) {
         batch = new SpriteBatch();
+        String selectedLevel = getLevel(level);
+        parent.setScreen(new PlayScreen(this, selectedLevel));
+
     }
+    public String getLevel(int level) {
+        switch (level) {
+            case 0: return LEVEL1;
+            case 1: return LEVEL2;
+            case 2: return LEVEL3;
+        }
+        return "";
+    }
+
     @Override
     public void create() {
         batch = new SpriteBatch();

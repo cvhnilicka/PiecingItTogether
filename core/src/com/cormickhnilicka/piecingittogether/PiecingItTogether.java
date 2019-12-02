@@ -51,11 +51,15 @@ public class PiecingItTogether extends Game {
 	public void setLevel(int level) {
 		switch(level) {
 			case 0: if (playScreen == null)
-				marioBros = new MarioBros();
-//			this.setScreen(marioBros);
-				playScreen = new PlayScreen(marioBros);
-				this.setScreen(playScreen);
+				marioBros = new MarioBros(this, level);
 			break;
+			case 1: if (playScreen == null)
+				marioBros = new MarioBros(this, level);
+				break;
+			case 2: if (playScreen == null)
+				marioBros = new MarioBros(this, level);
+				break;
+
 		}
 	}
 
