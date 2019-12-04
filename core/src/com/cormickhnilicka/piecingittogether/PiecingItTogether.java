@@ -61,6 +61,7 @@ public class PiecingItTogether extends Game {
 				break;
 
 		}
+		mainScreen.dispose();
 	}
 
 	@Override

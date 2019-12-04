@@ -110,7 +110,6 @@ public class MenuScreen implements Screen {
     @Override
     public void dispose() {
         // dispose of all the things
-
         stage.dispose();
     }
 }
